@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturación Verifactu para PYMES y Autónomos - ILERTEC</title>
+    <meta name="description" content="Soluciones Verifactu para PYMES y autónomos. Cumple la nueva ley de facturación en España con ILERTEC. Asesoramiento y software adaptado.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,600,700&display=swap">
+    <style>
+        html, body {
+            overflow-x: hidden;
+        }
+        body, html {
+            width: 100vw;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background: #f6f7fa;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+            color: #232323;
+            background: #f6f7fa;
+        }
+        header { background-color: #e20c18; color: white; padding: 0; display: flex; align-items: center; }
+        .logo-ilertec { height: 40px; margin: 10px 20px; }
+        nav { display: flex; gap: 10px; margin-left: auto; margin-right: 30px; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 0 10px; line-height: 40px; transition: color 0.2s;}
+        nav a:hover { color: #ffeaea; }
+        .topbar { background:#404040; color:#fff; text-align:center; font-size:1.15em; padding:12px 0; font-weight:bold; letter-spacing:0.5px;}
+        .topbar a { color:#fff; text-decoration:underline; font-weight:bold; margin:0 8px;}
+        .hero {
+            background: none;
+            min-height: 100vh;
+            width: 100vw;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('data:image/jpeg;base64,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') center/cover no-repeat;
+            opacity: 0.22;
+            z-index: 0;
+            filter: blur(2px);
+        }
+        .verifactu-sticker {
+            position: absolute;
+            left: unset;
+            right: -40px;
+            top: 10px;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            transform: rotate(18deg); /* Orientación hacia el otro lado */
+        }
+        @media (max-width: 900px) {
+            .verifactu-sticker {
+                right: -20px;
+                top: -10px;
+                transform: scale(0.7) rotate(18deg);
+            }
+        }
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            width: 100vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-text h1 {
+            color: #e20c18;
+            font-size: 2.1em;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            background: none;
+            box-shadow: none;
+        }
+        @media (max-width: 900px) {
+            .hero-text h1 {
+                font-size: 1.3em;
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 1em;
+                max-width: 99vw;
+            }
+        }
+        .hero-text p {
+            font-size: 1.25em;
+            color: #222;
+            margin-bottom: 28px;
+            font-weight: 400;
+        }
+        .cta {
+            background-color: #e20c18;
+            color: white;
+            padding: 16px 38px;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.15em;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(226,12,24,0.08);
+            max-width: 320px;
+        }
+        .cta:hover { background: #b80a13; transform: scale(1.07);}
+        .section {
+            min-height: 100vh;
+            width: 100vw;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 48px;
+            padding-bottom: 48px;
+            position: relative;
+        }
+        #pymes.section {
+            background: #23272f;
+            box-shadow: 0 4px 24px rgba(30,30,30,0.10);
+            border: none;
+        }
+        #pymes.section h2 {
+            color: #fff;
+            text-align: center;
+            font-size: 2.1em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        #pymes.section .section-desc {
+            color: #e0e0e0;
+            text-align: center;
+            font-size: 1.08em;
+            margin-bottom: 36px;
+        }
+        #pymes .features {
+            margin-top: 36px;
+            margin-bottom: 36px;
+        }
+        #pymes .feature {
+            background: #e20c18;
+            color: #fff;
+            border: 1.5px solid #e20c18;
+            border-radius: 14px;
+            padding: 32px 22px 28px 22px;
+            min-width: 200px;
+            max-width: 260px;
+            min-height: 220px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 2px 10px rgba(30,30,30,0.07);
+            transition: 
+                transform 0.25s cubic-bezier(.25,.8,.25,1), 
+                color 0.2s, 
+                border-color 0.2s,
+                background 0.2s,
+                box-shadow 0.25s;
+            opacity: 1;
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px rgba(226,12,24,0.10);
+            cursor: pointer;
+            margin-bottom: 0;
+            box-sizing: border-box;
+        }
+        #pymes .feature i {
+            color: #fff;
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        #pymes .feature h3,
+        #pymes .feature p {
+            color: #fff;
+            transition: color 0.2s;
+        }
+        #pymes .feature h3 {
+            font-family: 'Inter', 'Segoe UI Semibold', 'Arial', sans-serif;
+            font-size: 1.18em;
+            font-weight: 600;
+            margin: 18px 0 10px 0;
+        }
+        #pymes .feature p {
+            font-size: 1.04em;
+            margin-bottom: 0;
+        }
+        #pymes .feature:hover {
+            background: #fff;
+            color: #e20c18;
+            border-color: #e20c18;
+        }
+        #pymes .feature:hover i,
+        #pymes .feature:hover h3,
+        #pymes .feature:hover p {
+            color: #e20c18;
+        }
+        #pymes .section-link {
+            margin-top: auto;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        #pymes .cta {
+            background: #e20c18;
+            color: #fff;
+            border: 2px solid #e20c18;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #pymes .cta:hover {
+            background: #fff;
+            color: #e20c18;
+            border-color: #e20c18;
+        }
+        #autonomos.section {
+            background: #fff;
+            box-shadow: 0 4px 24px rgba(30,30,30,0.07);
+            border: none;
+        }
+        #autonomos.section h2 {
+            color: #23272f;
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        #autonomos.section .section-desc {
+            color: #404040;
+            text-align: center;
+            font-size: 1.08em;
+            margin-bottom: 36px;
+        }
+        #autonomos .features {
+            margin-top: 36px;
+            margin-bottom: 36px;
+        }
+        #autonomos .feature {
+            background: #23272f;
+            color: #fff;
+            border: 1.5px solid #23272f;
+            border-radius: 14px;
+            padding: 32px 22px 28px 22px;
+            min-width: 200px;
+            max-width: 260px;
+            min-height: 220px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            box-shadow: 0 2px 10px rgba(30,30,30,0.07);
+            transition: 
+                transform 0.25s cubic-bezier(.25,.8,.25,1), 
+                color 0.2s, 
+                border-color 0.2s,
+                background 0.2s,
+                box-shadow 0.25s;
+            opacity: 1;
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px rgba(226,12,24,0.10);
+            cursor: pointer;
+            margin-bottom: 0;
+            box-sizing: border-box;
+        }
+        #autonomos .feature i {
+            color: #fff;
+            font-size: 2.3em;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        #autonomos .feature h3,
+        #autonomos .feature p {
+            color: #fff;
+            transition: color 0.2s;
+        }
+        #autonomos .feature h3 {
+            font-family: 'Inter', 'Segoe UI Semibold', 'Arial', sans-serif;
+            font-size: 1.18em;
+            font-weight: 600;
+            margin: 18px 0 10px 0;
+        }
+        #autonomos .feature p {
+            font-size: 1.04em;
+            margin-bottom: 0;
+        }
+        #autonomos .feature:hover {
+            background: #e20c18;
+            color: #fff;
+            border-color: #e20c18;
+        }
+        #autonomos .feature:hover i {
+            color: #fff;
+        }
+        #autonomos .section-link {
+            margin-top: auto;
+            margin-bottom: 32px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        #autonomos .cta {
+            background: #23272f;
+            color: #fff;
+            border: 2px solid #23272f;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #autonomos .cta:hover {
+            background: #e20c18;
+            color: #fff;
+            border-color: #e20c18;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 36px 48px;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 48px;
+            margin-bottom: 48px;
+        }
+        .feature.visible {
+            opacity: 1;
+            transform: scale(1.04);
+            box-shadow: 0 8px 24px rgba(226,12,24,0.10);
+        }
+        .feature:hover {
+            transform: scale(1.06);
+            box-shadow: 0 8px 32px rgba(226,12,24,0.16);
+            z-index:2;
+        }
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; min-height: 80vh; }
+            .hero-text { max-width: 95vw; }
+            .features { flex-direction: column; align-items: center;}
+            .hero { flex-direction: column;}
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                gap: 28px 0;
+            }
+            .feature {
+                min-width: 0;
+                max-width: 100%;
+            }
+            .section {
+                padding-top: 32px;
+                padding-bottom: 32px;
+            }
+        }
+        /* FAQ estilos */
+        .faq {
+            background: #f4f4f4;
+            border-radius: 10px;
+            padding: 30px 20px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: 0 2px 8px rgba(30,30,30,0.07);
+        }
+        .faq-item {
+            text-align: left;
+            margin-bottom: 18px;
+            border: none;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 1.08em;
+            color: #222;
+            padding: 12px 0;
+            background: none;
+            transition: background 0.15s;
+            user-select: none;
+            font-weight: bold;
+        }
+        .faq-question:focus {
+            outline: none;
+        }
+        .faq-arrow {
+            font-size: 1.2em;
+            color: #e20c18;
+            margin-left: 10px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+        .faq-answer {
+            display: none;
+            background: #f4f4f4;
+            border-radius: 0 0 8px 8px;
+            padding: 10px 0 10px 0;
+            color: #222;
+            margin-bottom: 6px;
+        }
+        .faq-item.open .faq-answer {
+            display: block;
+            background: #f4f4f4;
+        }
+        .faq-item.open .faq-arrow {
+            transform: rotate(180deg);
+        }
+        /* Contacto */
+        .contact-section {
+            background: #404040;
+            color: #fff;
+            padding: 50px 20px 0 20px;
+            border-radius: 0 0 0 0;
+            text-align: center;
+            margin: 0;
+        }
+        .contact-section h2, .contact-section p { color: #fff; }
+        .contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1em;
+            background: #fff;
+            color: #191919;
+        }
+        .contact-form textarea { resize: vertical; }
+        .contact-form button {
+            background: #e20c18;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 10px;
+        }
+        .contact-form button:hover { background: #b80a13; transform: scale(1.05);}
+        footer {
+            background-color: #404040;
+            color: white;
+            text-align: center;
+            padding: 18px 10px 10px 10px;
+            margin-top:0;
+            border-radius: 0 0 0 0;
+        }
+        @media (max-width: 900px) {
+            .features {
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                gap: 28px 0;
+            }
+            .section {
+                padding-top: 32px;
+                padding-bottom: 32px;
+            }
+        }
+        .hero-text h1 {
+            max-width: 1100px;
+            margin: 0 auto 18px auto;
+            font-size: 2.1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        @media (max-width: 900px) {
+            .hero-text h1 {
+                font-size: 1.3em;
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 1em;
+                max-width: 99vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="LANDING_ILERTEC.html" style="display:flex; align-items:center;">
+            <img src="https://www.ilertec.com/imatges/logo-ilertec-navbar.jpg" alt="ILERTEC" class="logo-ilertec">
+        </a>
+        <nav>
+            <a href="ILERTEC_PYMES.html">PYMES</a>
+            <a href="ILERTEC_AUTONOMOS.html">Autónomos</a>
+            <a href="#faq">Preguntas frecuentes</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+    <div class="topbar">
+        <i class="fa-solid fa-phone" style="color:#e20c18;"></i>
+        <a href="tel:+34973232051">Llámanos: 973 232 051</a>
+        | <i class="fa-solid fa-envelope" style="color:#e20c18;"></i>
+        <a href="#contacto">Escríbenos aquí</a>
+    </div>
+    <div class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-text">
+            <h1>
+                ¿No sabes qué hacer con Verifactu?
+                <span class="verifactu-sticker" style="display:inline-block; margin-left:16px; transform:rotate(18deg);">
+                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none">
+                        <circle cx="35" cy="35" r="32" fill="#e20c18" stroke="#fff" stroke-width="5"/>
+                        <text x="50%" y="38%" text-anchor="middle" fill="#fff" font-size="13" font-family="Inter, Arial, sans-serif" font-weight="bold" dy=".3em">Verifactu</text>
+                        <text x="50%" y="56%" text-anchor="middle" fill="#fff" font-size="7" font-family="Inter, Arial, sans-serif" opacity="0.85">Solución</text>
+                        <text x="50%" y="68%" text-anchor="middle" fill="#fff" font-size="7" font-family="Inter, Arial, sans-serif" opacity="0.85">WKE adaptada</text>
+                    </svg>
+                </span>
+            </h1>
+            <p>
+                Te ayudamos a entender la nueva ley de facturación y a elegir la mejor opción para tu negocio. Descubre cómo adaptarte de forma sencilla y profesional.
+            </p>
+            <a href="#contacto" class="cta">Quiero asesoramiento</a>
+        </div>
+    </div>
+
+    <!-- APARTADO PYMES -->
+    <div class="section" id="pymes">
+        <h2><i class="fa-solid fa-building"></i> Para PYMES</h2>
+        <div class="section-desc">Soluciones avanzadas para la gestión y digitalización de pequeñas y medianas empresas.</div>
+        <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h3>Facturación digital</h3>
+                <p>Emite y gestiona tus facturas de forma segura y legal.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Control total</h3>
+                <p>Visualiza ventas, compras e inventario en un solo panel.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-gears"></i>
+                <h3>Automatización</h3>
+                <p>Ahorra tiempo automatizando tareas repetitivas.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h3>Cumplimiento legal</h3>
+                <p>Evita sanciones y cumple Verifactu fácilmente.</p>
+            </div>
+        </div>
+        <div class="section-link">
+            <a href="ILERTEC_PYMES.html" class="cta">¿Qué puede hacer tu empresa? Descúbrelo</a>
+        </div>
+    </div>
+
+    <!-- APARTADO AUTÓNOMOS -->
+    <div class="section" id="autonomos">
+        <h2><i class="fa-solid fa-user-tie"></i> Para Autónomos</h2>
+        <div class="section-desc">Herramientas sencillas y eficaces para la gestión diaria y el cumplimiento legal de autónomos.</div>
+        <div class="features">
+            <div class="feature">
+                <i class="fa-solid fa-bolt"></i>
+                <h3>Facturación rápida</h3>
+                <p>Crea y envía facturas en segundos desde cualquier lugar.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-wallet"></i>
+                <h3>Gestión de gastos</h3>
+                <p>Controla tus ingresos y gastos de forma sencilla.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-cloud"></i>
+                <h3>Acceso online</h3>
+                <p>Gestiona tu actividad desde cualquier dispositivo.</p>
+            </div>
+            <div class="feature">
+                <i class="fa-solid fa-circle-check"></i>
+                <h3>Tranquilidad legal</h3>
+                <p>Emite facturas adaptadas a Verifactu y olvídate de problemas.</p>
+            </div>
+        </div>
+        <div class="section-link">
+            <a href="ILERTEC_AUTONOMOS.html" class="cta">¿Qué ventajas tienes como autónomo?</a>
+        </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq" id="faq">
+        <h2 style="text-align:center;"><i class="fa-solid fa-circle-question" style="color:#e20c18;"></i> Preguntas frecuentes sobre Verifactu</h2>
+
+        <!-- 1. ¿Qué es Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Qué es Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Verifactu es el sistema legal impulsado por la Agencia Tributaria que obliga a empresas y autónomos a emitir facturas electrónicas con un registro seguro, trazable e inalterable. Su objetivo es garantizar la integridad, conservación y accesibilidad de las facturas, evitando manipulaciones y facilitando el control fiscal.
+                </p>
+            </div>
+        </div>
+
+        <!-- 2. ¿Quién está obligado a usar Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Quién está obligado a usar Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Todas las empresas y autónomos que emitan facturas en España deberán adaptarse a Verifactu, salvo algunas excepciones muy concretas. Si tienes dudas sobre tu caso, consúltanos.
+                </p>
+            </div>
+        </div>
+
+        <!-- 3. ¿Cuándo entra en vigor Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Cuándo entra en vigor Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    La entrada en vigor está prevista para 2025, aunque el calendario definitivo depende de la publicación del reglamento. Es recomendable prepararse cuanto antes para evitar prisas y problemas de última hora.
+                </p>
+            </div>
+        </div>
+
+        <!-- 4. ¿Qué información incluye una factura Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Qué información incluye una factura Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Además de los datos habituales de una factura, Verifactu exige un registro seguro de eventos, un código QR y un hash que garantizan la trazabilidad y la integridad de cada factura emitida.
+                </p>
+            </div>
+        </div>
+
+        <!-- 5. ¿Puedo adaptar mi programa actual a Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Puedo adaptar mi programa actual a Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Si utilizas soluciones Wolters Kluwer (a3factura, a3ERP, a3ASESOR, etc.), tendrás actualizaciones para cumplir Verifactu. Si usas otro software, consúltanos y te ayudamos a migrar o adaptar tu sistema.
+                </p>
+            </div>
+        </div>
+
+        <!-- 6. ¿Qué ventajas tiene cumplir con Verifactu usando Wolters Kluwer? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Qué ventajas tiene cumplir con Verifactu usando Wolters Kluwer?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Las soluciones Wolters Kluwer garantizan cumplimiento legal, actualizaciones automáticas, integración con la Agencia Tributaria y soporte especializado. Además, facilitan la digitalización y automatización de tu facturación.
+                </p>
+            </div>
+        </div>
+
+        <!-- 7. ¿Qué pasa si no me adapto a Verifactu? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Qué pasa si no me adapto a Verifactu?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    No cumplir con Verifactu puede suponer sanciones económicas y la imposibilidad de deducir gastos o justificar ingresos ante Hacienda. Es fundamental adaptarse antes de la fecha límite.
+                </p>
+            </div>
+        </div>
+
+        <!-- 8. ¿Me ayudáis con todo el proceso? -->
+        <div class="faq-item">
+            <div class="faq-question" tabindex="0"><strong>¿Me ayudáis con todo el proceso?</strong> <span class="faq-arrow">&#9660;</span></div>
+            <div class="faq-answer">
+                <p>
+                    Sí, en ILERTEC te asesoramos, implantamos y formamos en el uso de Verifactu con Wolters Kluwer, para que cumplas la ley de forma sencilla y segura.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACTO -->
+    <div class="contact-section" id="contacto">
+        <h2><i class="fa-solid fa-envelope" style="color:#e20c18;"></i> ¿Tienes dudas? Contacta con nosotros</h2>
+        <p>Déjanos tus datos y te ayudamos a cumplir Verifactu de forma sencilla.</p>
+        
+        <!-- Sustituye el bloque del formulario de contacto por este código para que los checkboxes queden alineados a la izquierda y dentro de la caja del formulario -->
+<form class="contact-form" style="max-width:400px;display:flex;flex-direction:column;align-items:center;">
+    <input type="text" placeholder="Nombre" required>
+    <input type="email" placeholder="Correo Electrónico" required>
+    <textarea placeholder="¿En qué podemos ayudarte?" rows="4" required></textarea>
+    <div style="width:100%;display:flex;flex-direction:column;">
+        <label style="display:flex;font-size:0.96em;opacity:0.85;cursor:pointer;max-width:100%;">
+            <input type="checkbox" required style="accent-color:#e20c18; width:10%; margin:10px;">
+            <span style="display:inline; text-align: left; width:90%;">He leído y acepto la <a href="https://www.ilertec.com/aviso-legal" target="_blank" style="color:#e20c18;text-decoration:underline;">política de privacidad y (LOPD)</a>.</span>
+        </label>
+        <label style="display:flex;font-size:0.96em;opacity:0.85;cursor:pointer;max-width:100%;">
+            <input type="checkbox" required style="accent-color:#e20c18; width:10%; margin: 10px;">
+            <span style="display:inline; text-align: left; width:90%; margin-top: 10px;">No soy un robot</span>
+        </label>
+    </div>
+    <button type="submit" class="cta" style="margin-top:8px;">Enviar</button>
+</form>
+    </div>
+    <footer>
+        <p>© 2025 ILERTEC CONSULTORIA TECNOLÒGICA.Todos los derechos reservados.</p>
+    </footer>
+    <script>
+    // Animación de aparición de features al hacer scroll
+    function revealOnScroll() {
+        const features = document.querySelectorAll('.feature');
+        const trigger = window.innerHeight * 0.85;
+        features.forEach(f => {
+            const rect = f.getBoundingClientRect();
+            if(rect.top < trigger) {
+                f.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
+
+    // FAQ desplegable con flecha estética
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', function() {
+            const item = this.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+        q.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') this.click();
+        });
+    });
+    </script>
+</body>
+</html>
